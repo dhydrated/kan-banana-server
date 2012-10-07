@@ -26,10 +26,11 @@
         http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
     <context:annotation-config />
-    <context:component-scan base-package="com.jappstart">
+    <context:component-scan base-package="com.jappstart,org.dhydrated.kanbanana">
         <context:exclude-filter type="aspectj" expression="com.jappstart.controller.*"/>
+        <context:exclude-filter type="aspectj" expression="com.jappstart.controller.server.controller.*"/>
     </context:component-scan>
-
+    
     <import resource="applicationContext-data.xml" />
     <import resource="applicationContext-security.xml" />
     <import resource="applicationContext-service.xml" />
