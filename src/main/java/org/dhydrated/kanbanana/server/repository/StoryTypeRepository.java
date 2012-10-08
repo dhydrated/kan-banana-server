@@ -4,11 +4,11 @@ import org.dhydrated.kanbanana.server.model.Project;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ProjectRepository extends BaseRepository<Project> {
+public class StoryTypeRepository extends BaseRepository<Project> {
 
 	@Override
 	public String getAllQuery() {
 		
-		return "SELECT * FROM Project";
+		return "SELECT * FROM StoryType st WHERE st.project.id=:parentId";
 	}
 }
