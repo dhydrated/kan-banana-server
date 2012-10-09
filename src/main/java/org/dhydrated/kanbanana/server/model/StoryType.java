@@ -1,7 +1,10 @@
 
 package org.dhydrated.kanbanana.server.model;
 
+import javax.persistence.Entity;
+
 @SuppressWarnings("serial")
+@Entity
 public class StoryType extends BaseModel {
 
 	private String name;

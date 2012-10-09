@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import org.springframework.stereotype.Repository;
 
 @SuppressWarnings("serial")
-@Repository
 @Entity
 public class Project extends BaseModel {
 	

@@ -5,20 +5,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.dhydrated.kanbanana.server.repository.BaseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
-public class BaseService<E> {
+public abstract class BaseService<E> {
 
 	private Logger log = Logger.getLogger(BaseService.class.getName());
-	@Autowired
-	private BaseRepository<E> repository;
 
-	public List<E> get(String parentId) {
+	public List<E> list(String parentId) {
 		
 		log.log(Level.INFO, "get");
 	
 		return getRepository().list(parentId);
+	}
+	
+	public E get(@PathVariable("id") String id) throws Exception{
+		
+		log.log(Level.INFO, "get");
+		
+		return getRepository().get(id);
 	}
 
 	public E save(@RequestBody E entity) {
@@ -32,12 +37,8 @@ public class BaseService<E> {
 		return entity;
 	}
 
-	public BaseRepository<E> getRepository() {
-		return repository;
-	}
+	public abstract BaseRepository<E> getRepository();
 
-	public void setRepository(BaseRepository<E> repository) {
-		this.repository = repository;
-	}
+	public abstract void setRepository(BaseRepository<E> repository);
 
 }

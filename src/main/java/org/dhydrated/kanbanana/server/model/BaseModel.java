@@ -11,7 +11,6 @@ import javax.persistence.MappedSuperclass;
 import org.datanucleus.jpa.annotations.Extension;
 
 @SuppressWarnings("serial")
-@Entity
 @MappedSuperclass
 public class BaseModel implements Serializable {
 
