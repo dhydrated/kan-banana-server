@@ -88,6 +88,8 @@
             <version>4.10</version>
             <scope>test</scope>
         </dependency>
+        
+
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-stubs</artifactId>
@@ -126,6 +128,13 @@
             </exclusions>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+			<groupId>org.datanucleus</groupId>
+			<artifactId>datanucleus-jpa</artifactId>
+			<version>${datanucleus.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
