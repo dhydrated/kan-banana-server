@@ -2,22 +2,20 @@ package org.dhydrated.kanbanana.server.model;
 
 import javax.persistence.Entity;
 
-import org.springframework.stereotype.Repository;
-
 @SuppressWarnings("serial")
 @Entity
 public class Project extends BaseModel {
 	
-    private String projectName;
+    private String name;
     
     private String description;
     
-	public String getProjectName() {
-		return projectName;
+	public String getName() {
+		return name;
 	}
 
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getDescription() {
