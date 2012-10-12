@@ -9,7 +9,7 @@ public class HistoryRepositoryJpaImpl extends BaseRepositoryJpaImpl<History> imp
 	@Override
 	public String getAllQuery() {
 		
-		return "SELECT e FROM History e WHERE e.project.id=:parentId";
+		return "SELECT e FROM History e WHERE e.storyId=:parentId";
 	}
 
 	@Override

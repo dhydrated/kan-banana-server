@@ -22,23 +22,23 @@ public class StoryTypeService extends BaseService<StoryType> {
 	@Autowired
 	private StoryTypeRepository repository;
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/story_type", consumes = "application/json", produces = "application/json")
+	@RequestMapping(method = RequestMethod.GET, value = "/project/{projectId}/story_type", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public List<StoryType> list() {
+	public List<StoryType> list(@PathVariable("projectId") String projectId) {
 		
-		return super.list(null);
+		return super.list(projectId);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/story_type/{id}", consumes = "application/json", produces = "application/json")
+	@RequestMapping(method = RequestMethod.GET, value = "/project/{projectId}/story_type/{id}", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public StoryType get(@PathVariable("id") String id) throws Exception{
+	public StoryType get(@PathVariable("projectId") String projectId, @PathVariable("id") String id) throws Exception{
 		
 		return super.get(id);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/story_type", consumes = "application/json", produces = "application/json")
+	@RequestMapping(method = RequestMethod.PUT, value = "/project/{projectId}/story_type", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public StoryType save(@RequestBody StoryType storyType) {
+	public StoryType save(@PathVariable("projectId") String projectId, @RequestBody StoryType storyType) {
 	
 		return super.save(storyType);
 	}

@@ -43,9 +43,9 @@ public abstract class BaseRepositoryJpaImpl<E> implements BaseRepository<E> {
 		}
 	
 		entities = query.getResultList();
-		if (entities != null && !entities.isEmpty()) {
+		/*if (entities != null && !entities.isEmpty()) {
 			throw new AppException();
-		}
+		}*/
 	
 		return entities;
 	}

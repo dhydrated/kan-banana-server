@@ -22,23 +22,23 @@ public class StorySizeService extends BaseService<StorySize> {
 	@Autowired
 	private StorySizeRepository repository;
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/story_size", consumes = "application/json", produces = "application/json")
+	@RequestMapping(method = RequestMethod.GET, value = "/project/{projectId}/story_size", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public List<StorySize> list() {
+	public List<StorySize> list(@PathVariable("projectId") String projectId) {
 		
-		return super.list(null);
+		return super.list(projectId);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/story_size/{id}", consumes = "application/json", produces = "application/json")
+	@RequestMapping(method = RequestMethod.GET, value = "/project/{projectId}/story_size/{id}", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public StorySize get(@PathVariable("id") String id) throws Exception{
+	public StorySize get(@PathVariable("projectId") String projectId, @PathVariable("id") String id) throws Exception{
 		
 		return super.get(id);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/story_size", consumes = "application/json", produces = "application/json")
+	@RequestMapping(method = RequestMethod.PUT, value = "/project/{projectId}/story_size", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public StorySize save(@RequestBody StorySize StorySize) {
+	public StorySize save(@PathVariable("projectId") String projectId, @RequestBody StorySize StorySize) {
 	
 		return super.save(StorySize);
 	}

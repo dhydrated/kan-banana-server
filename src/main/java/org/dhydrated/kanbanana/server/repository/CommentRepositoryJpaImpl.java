@@ -9,7 +9,7 @@ public class CommentRepositoryJpaImpl extends BaseRepositoryJpaImpl<Comment> imp
 	@Override
 	public String getAllQuery() {
 		
-		return "SELECT e FROM Comment e WHERE e.project.id=:parentId";
+		return "SELECT e FROM Comment e WHERE e.storyId=:parentId";
 	}
 
 	@Override

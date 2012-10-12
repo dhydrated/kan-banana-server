@@ -9,7 +9,7 @@ public class StorySizeRepositoryJpaImpl extends BaseRepositoryJpaImpl<StorySize>
 	@Override
 	public String getAllQuery() {
 		
-		return "SELECT e FROM StorySize e WHERE e.project.id=:parentId";
+		return "SELECT e FROM StorySize e WHERE e.projectId=:parentId";
 	}
 
 	@Override
