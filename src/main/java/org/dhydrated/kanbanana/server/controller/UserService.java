@@ -29,11 +29,19 @@ public class UserService extends BaseService<User> {
 		return super.list(null);
 	}
 	
+	
 	@RequestMapping(method = RequestMethod.GET, value = "/user/{id}", consumes = "application/json", produces = "application/json")
 	@ResponseBody
 	public User get(@PathVariable("id") String id) throws Exception{
 		
 		return super.get(id);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/user/username/{username}", consumes = "application/json", produces = "application/json")
+	@ResponseBody
+	public User getByUsername(@PathVariable("username") String username) throws Exception{
+		
+		return getRepository().getByUsername(username);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/user", consumes = "application/json", produces = "application/json")
