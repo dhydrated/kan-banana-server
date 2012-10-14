@@ -86,6 +86,12 @@ public abstract class BaseRepositoryJpaImpl<E> implements BaseRepository<E> {
 		return entity;
 	}
 	
-	
+	@Override
+	public void delete(String id) throws Exception {
+		
+		E entity = get(id);
+		
+		getEntityManager().remove(entity);
+	}
 
 }

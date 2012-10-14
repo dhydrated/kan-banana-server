@@ -4,10 +4,12 @@ import java.util.List;
 
 public interface BaseRepository<E> {
 
-	public abstract List<E> list(String parentId);
+	public List<E> list(String parentId);
 
-	public abstract E get(String Id) throws Exception;
+	public E get(String id) throws Exception;
 	
-	public abstract E save(E entity);
+	public E save(E entity);
+	
+	public void delete(String id) throws Exception;
 
 }
