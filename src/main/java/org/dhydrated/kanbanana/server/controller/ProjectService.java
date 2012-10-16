@@ -35,7 +35,12 @@ public class ProjectService extends BaseService<Project> {
 		return super.get(id);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/project", consumes = "application/json", produces = "application/json")
+	@RequestMapping(
+			method = RequestMethod.PUT, 
+			value = "/project", 
+			consumes = "application/json", 
+			produces = "application/json",
+			headers={"Access-Control-Allow-Origin=*"})
 	@ResponseBody
 	public Project save(@RequestBody Project project) {
 	
