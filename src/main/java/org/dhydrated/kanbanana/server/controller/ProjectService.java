@@ -39,8 +39,7 @@ public class ProjectService extends BaseService<Project> {
 			method = RequestMethod.PUT, 
 			value = "/project", 
 			consumes = "application/json", 
-			produces = "application/json",
-			headers={"Access-Control-Allow-Origin=*"})
+			produces = "application/json")
 	@ResponseBody
 	public Project save(@RequestBody Project project) {
 	
