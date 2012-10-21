@@ -36,6 +36,15 @@ public abstract class BaseService<E> {
 		
 		return entity;
 	}
+	
+	public Boolean delete(@PathVariable("id") String id) throws Exception{
+		
+		log.log(Level.INFO, "get");
+		
+		getRepository().delete(id);
+		
+		return true;
+	}
 
 	public abstract BaseRepository<E> getRepository();
 

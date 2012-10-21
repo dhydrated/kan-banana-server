@@ -1,10 +1,10 @@
 http://localhost:8080/register/create
 
 
-curl -H 'Content-Type: application/json' -X GET http://localhost:8080/project
+curl -H 'Content-Type: application/json' -X GET http://kan-banana.appspot.com/project
 
 
-curl -H 'Content-Type: application/json' -X PUT -d '{"name":"hello", "description":"world"}' http://localhost:8080/project
+curl -H 'Content-Type: application/json' -X PUT -d '{"name":"hello", "description":"world"}' http://kan-banana.appspot.com/project
 
 curl -H 'Content-Type: application/json' -X GET http://localhost:8080/project/agprYW4tYmFuYW5hcg0LEgdQcm9qZWN0GAEM/story_type
 

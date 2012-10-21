@@ -41,9 +41,37 @@ public class ProjectService extends BaseService<Project> {
 			consumes = "application/json", 
 			produces = "application/json")
 	@ResponseBody
-	public Project save(@RequestBody Project project) {
+	public Project put(@RequestBody Project project) {
 	
 		return super.save(project);
+	}
+	
+	@RequestMapping(
+			method = RequestMethod.POST, 
+			value = "/project", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public Project post(@RequestBody Project project) {
+	
+		return super.save(project);
+	}
+	
+	@RequestMapping(
+			method = RequestMethod.DELETE, 
+			value = "/project/{id}", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public Boolean delete(@PathVariable("id") String id) throws Exception {
+		
+		try {
+			super.delete(id);
+		} catch (Exception e) {
+			return false;
+		}
+		
+		return true;
 	}
 
 	@Override
