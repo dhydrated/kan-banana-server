@@ -35,7 +35,7 @@ public abstract class BaseRepositoryJpaImpl<E> implements BaseRepository<E> {
 	
 		List<E> entities = new ArrayList<E>();
 	
-		final Query query = entityManager
+		final Query query = getEntityManager()
 				.createQuery(this.getAllQuery());
 		
 		if(parentId != null){
@@ -88,10 +88,17 @@ public abstract class BaseRepositoryJpaImpl<E> implements BaseRepository<E> {
 	
 	@Override
 	public void delete(String id) throws Exception {
+		EntityManager em = getEntityManager();
 		
 		E entity = get(id);
+		try {
+			em.remove(entity);
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			em.close();
+		}
 		
-		getEntityManager().remove(entity);
 	}
 
 }
