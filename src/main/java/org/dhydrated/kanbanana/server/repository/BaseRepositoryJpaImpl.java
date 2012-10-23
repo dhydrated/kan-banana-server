@@ -88,17 +88,21 @@ public abstract class BaseRepositoryJpaImpl<E> implements BaseRepository<E> {
 	
 	@Override
 	public void delete(String id) throws Exception {
-		EntityManager em = getEntityManager();
-		
-		E entity = get(id);
-		try {
-			em.remove(entity);
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			em.close();
-		}
-		
+
+        EntityManager em = getEntityManager();
+        try {
+                String query = "DELETE FROM " + getEntityClass().getSimpleName() + " e WHERE e.id=:id";
+                
+                Query q = em.createQuery(query);
+                q.setParameter("id", id);
+                q.executeUpdate();
+        } 
+        catch(Exception e){
+                throw e;
+        }
+        finally {
+        em.close();
+    }
 	}
 
 }
