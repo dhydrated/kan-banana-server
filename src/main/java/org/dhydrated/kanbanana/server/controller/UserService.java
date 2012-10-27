@@ -44,11 +44,33 @@ public class UserService extends BaseService<User> {
 		return getRepository().getByUsername(username);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/user", consumes = "application/json", produces = "application/json")
+	@RequestMapping(method = RequestMethod.PUT, value = "/user/{id}", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public User save(@RequestBody User user) {
+	public User update(@PathVariable("id") String id, @RequestBody User user) {
 	
 		return super.save(user);
+	}
+	
+	@RequestMapping(
+			method = RequestMethod.POST, 
+			value = "/user", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public User create(@RequestBody User user) {
+	
+		return super.save(user);
+	}
+	
+	@RequestMapping(
+			method = RequestMethod.DELETE, 
+			value = "/user/{id}", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public Boolean delete(@PathVariable("id") String id) throws Exception {
+		
+		return super.delete(id);
 	}
 	
 

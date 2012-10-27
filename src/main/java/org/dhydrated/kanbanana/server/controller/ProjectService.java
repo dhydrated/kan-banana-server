@@ -37,11 +37,11 @@ public class ProjectService extends BaseService<Project> {
 
 	@RequestMapping(
 			method = RequestMethod.PUT, 
-			value = "/project", 
+			value = "/project/{id}", 
 			consumes = "application/json", 
 			produces = "application/json")
 	@ResponseBody
-	public Project put(@RequestBody Project project) {
+	public Project update(@PathVariable("id") String id, @RequestBody Project project) {
 	
 		return super.save(project);
 	}
@@ -52,7 +52,7 @@ public class ProjectService extends BaseService<Project> {
 			consumes = "application/json", 
 			produces = "application/json")
 	@ResponseBody
-	public Project post(@RequestBody Project project) {
+	public Project create(@RequestBody Project project) {
 	
 		return super.save(project);
 	}
@@ -65,13 +65,7 @@ public class ProjectService extends BaseService<Project> {
 	@ResponseBody
 	public Boolean delete(@PathVariable("id") String id) throws Exception {
 		
-		try {
-			super.delete(id);
-		} catch (Exception e) {
-			return false;
-		}
-		
-		return true;
+		return super.delete(id);
 	}
 
 	@Override

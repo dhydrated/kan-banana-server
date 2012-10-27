@@ -38,9 +38,31 @@ public class StatusService extends BaseService<Status> {
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/project/{projectId}/status", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public Status save(@PathVariable("projectId") String projectId, @RequestBody Status Status) {
+	public Status update(@PathVariable("projectId") String projectId, @RequestBody Status Status) {
 	
 		return super.save(Status);
+	}
+	
+	@RequestMapping(
+			method = RequestMethod.POST, 
+			value = "/project/{projectId}/status", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public Status create(@PathVariable("projectId") String storyId, @RequestBody Status status) {
+	
+		return super.save(status);
+	}
+	
+	@RequestMapping(
+			method = RequestMethod.DELETE, 
+			value = "/project/{projectId}/status/{id}", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public Boolean delete(@PathVariable("projectId") String storyId, @PathVariable("id") String id) throws Exception {
+		
+		return super.delete(id);
 	}
 	
 

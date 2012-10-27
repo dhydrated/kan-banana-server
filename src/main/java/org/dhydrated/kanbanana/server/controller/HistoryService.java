@@ -38,9 +38,31 @@ public class HistoryService extends BaseService<History> {
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/story/{storyId}/history", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public History save(@PathVariable("storyId") String storyId, @RequestBody History History) {
+	public History update(@PathVariable("storyId") String storyId, @RequestBody History History) {
 	
 		return super.save(History);
+	}
+	
+	@RequestMapping(
+			method = RequestMethod.POST, 
+			value = "/story/{storyId}/history", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public History create(@PathVariable("storyId") String storyId, @RequestBody History history) {
+	
+		return super.save(history);
+	}
+	
+	@RequestMapping(
+			method = RequestMethod.DELETE, 
+			value = "/story/{storyId}/history/{id}", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public Boolean delete(@PathVariable("storyId") String storyId, @PathVariable("id") String id) throws Exception {
+		
+		return super.delete(id);
 	}
 
 	@Override

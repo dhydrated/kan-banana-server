@@ -38,9 +38,31 @@ public class CommentService extends BaseService<Comment> {
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/story/{storyId}/comment", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public Comment save(@PathVariable("storyId") String storyId, @RequestBody Comment Comment) {
+	public Comment save(@PathVariable("storyId") String storyId, @RequestBody Comment comment) {
 	
-		return super.save(Comment);
+		return super.save(comment);
+	}
+	
+	@RequestMapping(
+			method = RequestMethod.POST, 
+			value = "/story/{storyId}/comment", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public Comment create(@PathVariable("storyId") String storyId, @RequestBody Comment comment) {
+	
+		return super.save(comment);
+	}
+	
+	@RequestMapping(
+			method = RequestMethod.DELETE, 
+			value = "/story/{storyId}/comment/{id}", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public Boolean delete(@PathVariable("storyId") String storyId, @PathVariable("id") String id) throws Exception {
+		
+		return super.delete(id);
 	}
 
 	@Override

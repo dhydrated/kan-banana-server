@@ -1,8 +1,6 @@
 package org.dhydrated.kanbanana.server.controller;
 
 
-import java.util.List;
-
 import org.dhydrated.kanbanana.server.model.ProjectMember;
 import org.dhydrated.kanbanana.server.model.ProjectRole;
 import org.dhydrated.kanbanana.server.repository.BaseRepository;
@@ -40,7 +38,7 @@ public class ProjectMemberService extends BaseService<ProjectMember> {
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/project/{projectId}/user/{userId}", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public ProjectMember getByProjectId(@PathVariable("projectId") String projectId, @PathVariable("userId") String userId, @RequestBody ProjectMember projectMember) {
+	public ProjectMember update(@PathVariable("projectId") String projectId, @PathVariable("userId") String userId, @RequestBody ProjectMember projectMember) {
 		
 		projectMember.setProjectId(projectId);
 		projectMember.setUserId(userId);
@@ -48,6 +46,20 @@ public class ProjectMemberService extends BaseService<ProjectMember> {
 		if(projectMember.getRole() == null || projectMember.getRole().equals("")){
 			projectMember.setRole(ProjectRole.GUEST);
 		}
+		
+		return super.save(projectMember);
+	}
+	
+	@RequestMapping(
+			method = RequestMethod.POST, 
+			value = "/project/{projectId}/user/{userId}", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public ProjectMember create(@PathVariable("projectId") String projectId, @PathVariable("userId") String userId, @RequestBody ProjectMember projectMember) {
+
+		projectMember.setProjectId(projectId);
+		projectMember.setUserId(userId);
 		
 		return super.save(projectMember);
 	}

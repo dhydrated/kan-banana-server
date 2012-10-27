@@ -39,9 +39,13 @@ public abstract class BaseService<E> {
 	
 	public Boolean delete(@PathVariable("id") String id) throws Exception{
 		
-		log.log(Level.INFO, "get");
+		log.log(Level.INFO, "delete");
 		
-		getRepository().delete(id);
+		try {
+			getRepository().delete(id);
+		} catch (Exception e) {
+			return false;
+		}
 		
 		return true;
 	}

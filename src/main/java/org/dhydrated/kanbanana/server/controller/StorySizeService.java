@@ -3,6 +3,7 @@ package org.dhydrated.kanbanana.server.controller;
 
 import java.util.List;
 
+import org.dhydrated.kanbanana.server.model.Story;
 import org.dhydrated.kanbanana.server.model.StorySize;
 import org.dhydrated.kanbanana.server.repository.BaseRepository;
 import org.dhydrated.kanbanana.server.repository.StorySizeRepository;
@@ -41,6 +42,28 @@ public class StorySizeService extends BaseService<StorySize> {
 	public StorySize save(@PathVariable("projectId") String projectId, @RequestBody StorySize StorySize) {
 	
 		return super.save(StorySize);
+	}
+	
+	@RequestMapping(
+			method = RequestMethod.POST, 
+			value = "/project/{projectId}/story_size", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public StorySize create(@PathVariable("projectId") String storyId, @RequestBody StorySize storySize) {
+	
+		return super.save(storySize);
+	}
+	
+	@RequestMapping(
+			method = RequestMethod.DELETE, 
+			value = "/project/{projectId}/story_size/{id}", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public Boolean delete(@PathVariable("projectId") String storyId, @PathVariable("id") String id) throws Exception {
+		
+		return super.delete(id);
 	}
 
 	@Override

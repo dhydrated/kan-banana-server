@@ -43,6 +43,28 @@ public class StoryTypeService extends BaseService<StoryType> {
 		return super.save(storyType);
 	}
 	
+	@RequestMapping(
+			method = RequestMethod.POST, 
+			value = "/project/{projectId}/story_type", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public StoryType create(@PathVariable("projectId") String storyId, @RequestBody StoryType storyType) {
+	
+		return super.save(storyType);
+	}
+	
+	@RequestMapping(
+			method = RequestMethod.DELETE, 
+			value = "/project/{projectId}/story_type/{id}", 
+			consumes = "application/json", 
+			produces = "application/json")
+	@ResponseBody
+	public Boolean delete(@PathVariable("projectId") String storyId, @PathVariable("id") String id) throws Exception {
+		
+		return super.delete(id);
+	}
+	
 
 	@Override
 	public StoryTypeRepository getRepository() {
