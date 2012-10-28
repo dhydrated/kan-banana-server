@@ -36,9 +36,9 @@ public class StatusService extends BaseService<Status> {
 		return super.get(id);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/project/{projectId}/status", consumes = "application/json", produces = "application/json")
+	@RequestMapping(method = RequestMethod.PUT, value = "/project/{projectId}/status/{id}", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public Status update(@PathVariable("projectId") String projectId, @RequestBody Status Status) {
+	public Status update(@PathVariable("projectId") String projectId, @PathVariable("id") String id, @RequestBody Status Status) {
 	
 		return super.save(Status);
 	}
