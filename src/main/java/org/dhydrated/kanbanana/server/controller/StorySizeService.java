@@ -3,7 +3,6 @@ package org.dhydrated.kanbanana.server.controller;
 
 import java.util.List;
 
-import org.dhydrated.kanbanana.server.model.Story;
 import org.dhydrated.kanbanana.server.model.StorySize;
 import org.dhydrated.kanbanana.server.repository.BaseRepository;
 import org.dhydrated.kanbanana.server.repository.StorySizeRepository;
@@ -37,9 +36,9 @@ public class StorySizeService extends BaseService<StorySize> {
 		return super.get(id);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/project/{projectId}/story_size", consumes = "application/json", produces = "application/json")
+	@RequestMapping(method = RequestMethod.PUT, value = "/project/{projectId}/story_size/{id}", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public StorySize save(@PathVariable("projectId") String projectId, @RequestBody StorySize StorySize) {
+	public StorySize save(@PathVariable("projectId") String projectId, @PathVariable("id") String id, @RequestBody StorySize StorySize) {
 	
 		return super.save(StorySize);
 	}
