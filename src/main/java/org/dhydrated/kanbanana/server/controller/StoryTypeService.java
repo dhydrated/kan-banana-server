@@ -36,9 +36,9 @@ public class StoryTypeService extends BaseService<StoryType> {
 		return super.get(id);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/project/{projectId}/story_type", consumes = "application/json", produces = "application/json")
+	@RequestMapping(method = RequestMethod.PUT, value = "/project/{projectId}/story_type/{id}", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public StoryType save(@PathVariable("projectId") String projectId, @RequestBody StoryType storyType) {
+	public StoryType save(@PathVariable("projectId") String projectId, @PathVariable("id") String id, @RequestBody StoryType storyType) {
 	
 		return super.save(storyType);
 	}
