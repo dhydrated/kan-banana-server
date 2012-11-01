@@ -36,9 +36,9 @@ public class HistoryService extends BaseService<History> {
 		return super.get(id);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/story/{storyId}/history", consumes = "application/json", produces = "application/json")
+	@RequestMapping(method = RequestMethod.PUT, value = "/story/{storyId}/history/{id}", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public History update(@PathVariable("storyId") String storyId, @RequestBody History History) {
+	public History update(@PathVariable("storyId") String storyId, @PathVariable("id") String id, @RequestBody History History) {
 	
 		return super.save(History);
 	}

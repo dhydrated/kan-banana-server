@@ -36,9 +36,9 @@ public class CommentService extends BaseService<Comment> {
 		return super.get(id);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/story/{storyId}/comment", consumes = "application/json", produces = "application/json")
+	@RequestMapping(method = RequestMethod.PUT, value = "/story/{storyId}/comment/{id}", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public Comment save(@PathVariable("storyId") String storyId, @RequestBody Comment comment) {
+	public Comment save(@PathVariable("storyId") String storyId, @PathVariable("id") String id, @RequestBody Comment comment) {
 	
 		return super.save(comment);
 	}
