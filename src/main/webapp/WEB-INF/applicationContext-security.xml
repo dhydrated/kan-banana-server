@@ -32,6 +32,7 @@
     <http auto-config="false" use-expressions="true" security="none" pattern="/jsonrpc/**" />
     <http auto-config="false" use-expressions="true" security="none" pattern="/test/**" />
     <http auto-config="false" use-expressions="true" security="none" pattern="/project/**" />
+    <http auto-config="false" use-expressions="true" security="none" pattern="/projectmember/**" />
     
     <http auto-config="false" access-decision-manager-ref="accessDecisionManager" use-expressions="true">
         <intercept-url pattern="/_ah/**" access="hasRole('ROLE_ANONYMOUS')" requires-channel="http" />
