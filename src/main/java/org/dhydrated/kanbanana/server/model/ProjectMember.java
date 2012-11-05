@@ -8,7 +8,7 @@ public class ProjectMember extends BaseModel {
 
 	private String projectId;
 	
-	private String userId;
+	private String email;
 	
 	private ProjectRole role;
 
@@ -20,12 +20,12 @@ public class ProjectMember extends BaseModel {
 		this.projectId = projectId;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public ProjectRole getRole() {
