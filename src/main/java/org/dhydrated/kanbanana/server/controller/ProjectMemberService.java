@@ -1,6 +1,8 @@
 package org.dhydrated.kanbanana.server.controller;
 
 
+import java.util.List;
+
 import org.dhydrated.kanbanana.server.model.ProjectMember;
 import org.dhydrated.kanbanana.server.model.ProjectRole;
 import org.dhydrated.kanbanana.server.repository.BaseRepository;
@@ -22,21 +24,29 @@ public class ProjectMemberService extends BaseService<ProjectMember> {
 	private ProjectMemberRepository repository;
 	
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/project/{projectId}/user/{userId}", consumes = "application/json", produces = "application/json")
+	@RequestMapping(method = RequestMethod.GET, value = "/projectmember/{projectId}/user/{userId}", consumes = "application/json", produces = "application/json")
 	@ResponseBody
 	public ProjectMember getByProjectId(@PathVariable("projectId") String projectId, @PathVariable("userId") String userId) {
 
 		return getRepository().getByProjectIdAndUserId(projectId, userId);
 	}
 	
-	@RequestMapping(method = RequestMethod.DELETE, value = "/project/{projectId}/user/{userId}", consumes = "application/json", produces = "application/json")
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/projectmember/{projectId}", consumes = "application/json", produces = "application/json")
+	@ResponseBody
+	public List<ProjectMember> getByProjectId(@PathVariable("projectId") String projectId) {
+
+		return getRepository().getByProjectId(projectId);
+	}
+	
+	@RequestMapping(method = RequestMethod.DELETE, value = "/projectmember/{projectId}/user/{userId}", consumes = "application/json", produces = "application/json")
 	@ResponseBody
 	public void deleteByProjectIdAndUserId(@PathVariable("projectId") String projectId, @PathVariable("userId") String userId) {
 
 		getRepository().deleteByProjectIdAndUserId(projectId, userId);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, value = "/project/{projectId}/user/{userId}", consumes = "application/json", produces = "application/json")
+	@RequestMapping(method = RequestMethod.PUT, value = "/projectmember/{projectId}/user/{userId}", consumes = "application/json", produces = "application/json")
 	@ResponseBody
 	public ProjectMember update(@PathVariable("projectId") String projectId, @PathVariable("userId") String userId, @RequestBody ProjectMember projectMember) {
 		
@@ -52,7 +62,7 @@ public class ProjectMemberService extends BaseService<ProjectMember> {
 	
 	@RequestMapping(
 			method = RequestMethod.POST, 
-			value = "/project/{projectId}/user/{userId}", 
+			value = "/projectmember/{projectId}/user/{userId}", 
 			consumes = "application/json", 
 			produces = "application/json")
 	@ResponseBody
