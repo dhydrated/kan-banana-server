@@ -1,5 +1,8 @@
 package org.dhydrated.kanbanana.server.repository;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.persistence.Query;
 
 import org.dhydrated.kanbanana.server.model.ProjectMember;
@@ -9,6 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserRepositoryJpaImpl extends BaseRepositoryJpaImpl<User> implements UserRepository {
 
+	private Logger log = Logger.getLogger(UserRepositoryJpaImpl.class.getName());
+	
 	@Override
 	public String getAllQuery() {
 		
@@ -31,12 +36,17 @@ public class UserRepositoryJpaImpl extends BaseRepositoryJpaImpl<User> implement
 		User entity = new User();
 	
 		final Query query = getEntityManager()
-				.createQuery("SELECT e FROM ProjectMember e WHERE e.username=:username");
+				.createQuery("SELECT e FROM ProjectMember e WHERE e.email=:email");
 		
 		query.setParameter("username", username);
-	
+
+		try {
 		entity = (User) query.getSingleResult();
-	
+		}
+		catch(Exception e){
+			log.log(Level.WARNING, e.getMessage());
+		}
+		
 		return entity;
 	}
 }

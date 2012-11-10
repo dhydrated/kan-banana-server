@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.dhydrated.kanbanana.server.exception.AppException;
 import org.springframework.transaction.annotation.Transactional;
 
 public abstract class BaseRepositoryJpaImpl<E> implements BaseRepository<E> {
