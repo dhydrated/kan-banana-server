@@ -31,14 +31,14 @@ public class UserRepositoryJpaImpl extends BaseRepositoryJpaImpl<User> implement
 	}
 
 	@Override
-	public User getByUsername(String username) {
+	public User getByUsername(String email) {
 		
 		User entity = new User();
 	
 		final Query query = getEntityManager()
-				.createQuery("SELECT e FROM ProjectMember e WHERE e.email=:email");
+				.createQuery("SELECT e FROM User e WHERE e.email=:email");
 		
-		query.setParameter("username", username);
+		query.setParameter("email", email);
 
 		try {
 		entity = (User) query.getSingleResult();
