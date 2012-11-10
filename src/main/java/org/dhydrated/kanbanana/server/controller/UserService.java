@@ -37,7 +37,8 @@ public class UserService extends BaseService<User> {
 		return super.get(id);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/user/username/{username}", consumes = "application/json", produces = "application/json")
+	//RequestMapping(method = RequestMethod.GET, value = Routes.BLAH_GET + "/{blahName:.+}")
+	@RequestMapping(method = RequestMethod.GET, value = "/user/username/{username:.+}", consumes = "application/json", produces = "application/json")
 	@ResponseBody
 	public User getByUsername(@PathVariable("username") String username) throws Exception{
 		
