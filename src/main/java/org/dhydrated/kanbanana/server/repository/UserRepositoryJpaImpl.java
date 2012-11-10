@@ -34,6 +34,8 @@ public class UserRepositoryJpaImpl extends BaseRepositoryJpaImpl<User> implement
 	public User getByUsername(String email) {
 		
 		User entity = new User();
+		
+		log.log(Level.INFO, "email: " + email);
 	
 		final Query query = getEntityManager()
 				.createQuery("SELECT e FROM User e WHERE e.email=:email");
